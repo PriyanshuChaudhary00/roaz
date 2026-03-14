@@ -2,6 +2,7 @@
 
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
+import { CategorySection } from "@/components/CategorySection";
 import { ProductPreview } from "@/components/ProductPreview";
 import { Footer } from "@/components/Footer";
 import { motion } from "framer-motion";
@@ -12,6 +13,7 @@ export default function Home() {
     <main className="min-h-screen bg-background text-foreground selection:bg-primary/30 selection:text-foreground">
       <Navbar />
       <Hero />
+      <CategorySection />
       <ProductPreview />
       
       {/* Brand Story Section */}
