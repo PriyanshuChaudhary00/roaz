@@ -4,13 +4,23 @@ import { ShoppingBag, Search, Menu, Heart, User, X, ChevronDown } from "lucide-r
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ThemeToggle } from "./ThemeToggle";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CATEGORIES } from "@/constants/products";
 
 export const Navbar = () => {
   const [searchOpen, setSearchOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
 
   const navLinks = [
     { label: "Shop", href: "/#shop" },
@@ -26,7 +36,11 @@ export const Navbar = () => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50 flex items-center justify-between px-6 lg:px-10 py-4 bg-background/80 dark:bg-zinc-900/80 backdrop-blur-xl border border-foreground/10 dark:border-white/20 rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
+        className={`fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50 flex items-center justify-between px-6 lg:px-10 py-4 transition-all duration-300 rounded-full ${
+          isScrolled
+            ? "bg-background/80 dark:bg-zinc-900/80 backdrop-blur-xl border border-foreground/10 dark:border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
+            : "bg-transparent border-transparent shadow-none"
+        }`}
       >
         {/* Left */}
         <div className="flex items-center gap-8">

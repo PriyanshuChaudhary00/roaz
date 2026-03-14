@@ -10,17 +10,26 @@ export const Hero = () => {
       {/* Background Image */}
       <div className="absolute inset-0 z-0 flex justify-center lg:justify-end">
         <div className="relative w-full lg:w-[65%] h-full opacity-60 lg:opacity-100">
+          {/* Light Mode Image */}
           <Image
-            src="/hero-img.jpg"
-            alt="ROAZ Fashion"
+            src="/man3.png"
+            alt="ROAZ Fashion Light"
             fill
-            className="object-cover object-[center_top]"
+            className="object-contain object-[center_bottom] dark:hidden"
             priority
             quality={100}
             unoptimized
           />
-          {/* Blend image with background only in dark mode */}
-          <div className="absolute inset-0 hidden dark:block bg-gradient-to-b lg:bg-gradient-to-r from-zinc-950 via-zinc-950/40 to-transparent" />
+          {/* Dark Mode Image */}
+          <Image
+            src="/man2.png"
+            alt="ROAZ Fashion Dark"
+            fill
+            className="object-contain object-[center_bottom] hidden dark:block"
+            priority
+            quality={100}
+            unoptimized
+          />
         </div>
       </div>
 
@@ -35,7 +44,7 @@ export const Hero = () => {
             <span className="text-xs font-bold tracking-[0.4em] uppercase text-black/40 dark:text-white/40 mb-6 block">
               Spring/Summer 2026 Collection
             </span>
-            <h1 className="text-7xl md:text-[120px] lg:text-[160px] font-medium tracking-tight text-black dark:text-white leading-[0.9] mb-10 lg:mb-12 font-[family-name:var(--font-playfair)]">
+            <h1 className="text-6xl md:text-[120px] lg:text-[160px] font-medium tracking-tight text-black dark:text-white leading-[0.9] mb-10 lg:mb-12 font-[family-name:var(--font-playfair)]">
               Clothing
             </h1>
 
@@ -43,7 +52,7 @@ export const Hero = () => {
               <motion.button
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                className="px-10 py-5 bg-black dark:bg-white text-white dark:text-black text-sm font-medium rounded-lg transition-all"
+                className="px-10 py-5 bg-black dark:bg-white text-white dark:text-black text-sm cursor-pointer font-medium rounded-lg transition-all"
               >
                 Shop Now
               </motion.button>

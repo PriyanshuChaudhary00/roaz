@@ -17,12 +17,12 @@ export default function Home() {
       <ProductPreview />
       
       {/* Brand Story Section */}
-      <section id="about" className="py-48 bg-zinc-100 dark:bg-zinc-950 text-foreground relative overflow-hidden">
+      <section id="about" className="py-24 md:py-48 bg-zinc-100 dark:bg-zinc-950 text-foreground relative overflow-hidden">
         {/* Subtle Background Gradients */}
         <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-sky-500/10 rounded-full blur-[150px] -translate-y-1/2 -translate-x-1/2 opacity-30" />
         
-        <div className="container mx-auto px-8 max-w-7xl relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-32 items-center">
+        <div className="container mx-auto px-6 md:px-8 max-w-7xl relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 items-center">
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -37,9 +37,9 @@ export default function Home() {
                 className="object-cover group-hover:scale-110 transition-transform duration-1000"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity" />
-              <div className="absolute bottom-16 left-16 right-16">
-                <p className="text-4xl font-black tracking-widest text-white/90 leading-tight">CRAFTED FOR THE VANGUARD.</p>
-                <div className="w-16 h-1.5 bg-white mt-6 rounded-full" />
+              <div className="absolute bottom-8 left-8 right-8 md:bottom-16 md:left-16 md:right-16">
+                <p className="text-2xl md:text-4xl font-black tracking-widest text-white/90 leading-tight">CRAFTED FOR THE VANGUARD.</p>
+                <div className="w-12 h-1 md:w-16 md:h-1.5 bg-white mt-4 md:mt-6 rounded-full" />
               </div>
             </motion.div>
 
@@ -48,17 +48,17 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="flex flex-col gap-16"
+              className="flex flex-col gap-8 md:gap-16"
             >
-              <h2 className="text-6xl md:text-8xl font-black tracking-tight leading-[0.9]">
-                EST. <br />
-                <span className="text-outline text-foreground/40">MMXXVI.</span>
+              <h2 className="text-5xl md:text-8xl font-black tracking-tight leading-[0.9]">
+                EST. <br className="hidden md:block" />
+                <span className="text-outline text-foreground/40 md:ml-0 ml-2">MMXXVI.</span>
               </h2>
               <div className="space-y-8">
-                <p className="text-2xl font-light leading-relaxed text-foreground/50">
-                  ROAZ was born at the intersection of architectural precision and urban fluidity. We don&apos;t just create garments; we engineer silhouettes for those who define the future.
+                <p className="text-lg md:text-2xl font-light leading-relaxed text-foreground/50">
+                  ROAZ was born at the intersection of architectural precision and urban fluidity. We engineer silhouettes for those who define the future.
                 </p>
-                <p className="text-lg font-medium tracking-wide text-foreground/40 uppercase">
+                <p className="text-sm md:text-lg font-bold tracking-wide text-foreground/40 uppercase">
                   Signature Drop 01: Available Worldwide.
                 </p>
               </div>

@@ -10,11 +10,11 @@ const CategoryRow = ({ title, categoryProducts }: { title: string; categoryProdu
   const categorySlug = title.toLowerCase();
 
   return (
-    <div className="mb-32">
-      <div className="flex items-center justify-between mb-12 px-8">
+    <div className="mb-20 md:mb-32">
+      <div className="flex items-center justify-between mb-8 md:mb-12 px-6 md:px-8">
         <div>
-          <h3 className="text-4xl md:text-5xl font-black tracking-tighter uppercase mb-2">{title}</h3>
-          <div className="w-16 h-1 bg-foreground rounded-full" />
+          <h3 className="text-2xl md:text-5xl font-black tracking-tighter uppercase mb-2">{title}</h3>
+          <div className="w-12 h-1 md:w-16 bg-foreground rounded-full" />
         </div>
         <Link 
           href={`/collections/${categorySlug}`}
@@ -25,12 +25,12 @@ const CategoryRow = ({ title, categoryProducts }: { title: string; categoryProdu
       </div>
 
       <div className="relative">
-        <div className="flex overflow-x-auto gap-8 px-8 pb-12 no-scrollbar scroll-smooth snap-x snap-mandatory">
+        <div className="flex overflow-x-auto gap-4 md:gap-8 px-6 md:px-8 pb-12 no-scrollbar scroll-smooth snap-x snap-mandatory">
           {categoryProducts.map((product) => (
             <motion.div
               key={product.id}
               whileHover={{ y: -10 }}
-              className="flex-none w-[300px] md:w-[400px] snap-start"
+              className="flex-none w-[260px] md:w-[400px] snap-start"
             >
               <div className="relative aspect-[4/5] rounded-[40px] overflow-hidden bg-zinc-100 dark:bg-zinc-900 shadow-xl group border border-foreground/5">
                 <Image
@@ -65,7 +65,7 @@ const CategoryRow = ({ title, categoryProducts }: { title: string; categoryProdu
           ))}
           
           {/* View All Card */}
-          <Link href={`/collections/${categorySlug}`} className="flex-none w-[300px] md:w-[400px] snap-start">
+          <Link href={`/collections/${categorySlug}`} className="flex-none w-[260px] md:w-[400px] snap-start">
             <div className="aspect-[4/5] rounded-[40px] border-2 border-dashed border-foreground/10 flex flex-col items-center justify-center gap-6 group hover:border-foreground/30 transition-colors cursor-pointer">
               <div className="w-20 h-20 rounded-full bg-foreground/5 flex items-center justify-center group-hover:scale-110 transition-transform">
                 <ArrowRight size={32} className="text-foreground/40" />
@@ -87,19 +87,19 @@ const CategoryRow = ({ title, categoryProducts }: { title: string; categoryProdu
 
 export const ProductPreview = () => {
   return (
-    <section id="shop" className="py-48 bg-background selection:bg-black selection:text-white overflow-hidden">
+    <section id="shop" className="py-24 md:py-48 bg-background selection:bg-black selection:text-white overflow-hidden">
       <div className="container mx-auto">
-        <div className="px-8 mb-32 max-w-4xl">
+        <div className="px-6 md:px-8 mb-20 md:mb-32 max-w-4xl">
           <motion.h2 
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="text-7xl md:text-9xl font-black tracking-tighter leading-[0.85] mb-12"
+            className="text-5xl md:text-9xl font-black tracking-tighter leading-[0.85] mb-8 md:mb-12"
           >
             THE <br />
             COLLECTIONS.
           </motion.h2>
-          <p className="text-2xl font-light text-foreground/50 leading-relaxed border-l-4 border-foreground/10 pl-12">
+          <p className="text-lg md:text-2xl font-light text-foreground/50 leading-relaxed border-l-2 md:border-l-4 border-foreground/10 pl-6 md:pl-12">
             Engineering the future of urban silhouettes. Four distinct drops, one singular vision of architectural elegance.
           </p>
         </div>
