@@ -15,7 +15,7 @@ export default function Home() {
       <ProductPreview />
       
       {/* Brand Story Section */}
-      <section id="about" className="py-48 bg-zinc-950 text-white relative overflow-hidden">
+      <section id="about" className="py-48 bg-zinc-100 dark:bg-zinc-950 text-foreground relative overflow-hidden">
         {/* Subtle Background Gradients */}
         <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-sky-500/10 rounded-full blur-[150px] -translate-y-1/2 -translate-x-1/2 opacity-30" />
         
@@ -26,7 +26,7 @@ export default function Home() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1, ease: "easeOut" }}
-              className="relative aspect-[4/5] rounded-[60px] overflow-hidden shadow-2xl group border border-white/10"
+              className="relative aspect-[4/5] rounded-[60px] overflow-hidden shadow-2xl group border border-foreground/10"
             >
               <Image 
                 src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=2000&auto=format&fit=crop"
@@ -50,21 +50,21 @@ export default function Home() {
             >
               <h2 className="text-6xl md:text-8xl font-black tracking-tight leading-[0.9]">
                 EST. <br />
-                <span className="text-outline text-white/40">MMXXVI.</span>
+                <span className="text-outline text-foreground/40">MMXXVI.</span>
               </h2>
               <div className="space-y-8">
-                <p className="text-2xl font-light leading-relaxed text-zinc-400">
+                <p className="text-2xl font-light leading-relaxed text-foreground/50">
                   ROAZ was born at the intersection of architectural precision and urban fluidity. We don&apos;t just create garments; we engineer silhouettes for those who define the future.
                 </p>
-                <p className="text-lg font-medium tracking-wide text-zinc-500 uppercase">
+                <p className="text-lg font-medium tracking-wide text-foreground/40 uppercase">
                   Signature Drop 01: Available Worldwide.
                 </p>
               </div>
               <motion.button 
                 whileHover={{ x: 10 }}
-                className="flex items-center gap-6 text-2xl font-black tracking-widest hover:text-white transition-colors group"
+                className="flex items-center gap-6 text-2xl font-black tracking-widest hover:text-primary transition-colors group"
               >
-                READ OUR MANIFESTO <span className="w-12 h-[2px] bg-white group-hover:w-20 transition-all" />
+                READ OUR MANIFESTO <span className="w-12 h-[2px] bg-foreground group-hover:w-20 transition-all" />
               </motion.button>
             </motion.div>
           </div>
