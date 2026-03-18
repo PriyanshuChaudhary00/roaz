@@ -62,6 +62,24 @@ export default function ShopPage() {
   }, [genderParam]);
 
   const [selectedColors, setSelectedColors] = useState<string[]>([]);
+  const [products, setProducts] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchProducts() {
+      try {
+        const res = await fetch("/api/products");
+        const data = await res.json();
+        setProducts(data);
+      } catch (e) {
+        console.error("Failed to fetch products:", e);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchProducts();
+  }, []);
+
   const [maxPrice, setMaxPrice] = useState(MAX_PRICE);
   const [sort, setSort] = useState<SortOption>("popular");
   const [expandedSections, setExpandedSections] = useState({
@@ -77,7 +95,7 @@ export default function ShopPage() {
   };
 
   const filtered = useMemo(() => {
-    let list = [...PRODUCTS];
+    let list = [...products];
     if (selectedCategories.length) list = list.filter((p) => selectedCategories.includes(p.category));
     if (selectedGenders.length) list = list.filter((p) => selectedGenders.includes(p.gender) || p.gender === "Unisex");
     if (selectedSizes.length) list = list.filter((p) => p.sizes.some((s) => selectedSizes.includes(s)));
@@ -215,11 +233,19 @@ export default function ShopPage() {
           </div>
 
           {/* Product Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-10">
-            {filtered.map((product, i) => (
-              <ProductCard key={product.id} product={product} index={i} />
-            ))}
-          </div>
+          {loading ? (
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-10">
+              {[...Array(8)].map((_, i) => (
+                <div key={i} className="aspect-[3/4] rounded-2xl bg-foreground/5 animate-pulse" />
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-10">
+              {filtered.map((product, i) => (
+                <ProductCard key={product.id} product={product} index={i} />
+              ))}
+            </div>
+          )}
 
           {filtered.length === 0 && (
             <div className="py-32 text-center">
